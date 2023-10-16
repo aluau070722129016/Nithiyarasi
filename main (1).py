@@ -1,35 +1,47 @@
-year=2023
+#3.2 Implement a function called sort_students that takes a list of student objects as input and sorts the list based on their CGPA (Cumulative Grade Point Average) in descending order. Each student object has the following attributes: name (string), roll_number (string), and cgpa (float). Test the function with different input lists of students.
 
-# To get year (integer input) from the user
+class Student:
 
-# year = int(input("Enter a year: "))
+    def __init__(self, name, roll_number, cgpa):
 
+        self.name = name
 
+        self.roll_number = roll_number
 
-# divided by 100 means century year (ending with 00)
-
-# century year divided by 400 is leap year
-
-if (year % 400 == 0) and (year % 100 == 0):
-
-    print("{0} is a leap year".format(year))
+        self.cgpa = cgpa
 
 
 
-# not divided by 100 means not a century year
+def sort_students(student_list):
 
-# year divided by 4 is a leap year
+    sorted_students = sorted(student_list, key=lambda student: student.cgpa, reverse=True)
 
-elif (year % 4 ==0) and (year % 100 != 0):
-
-    print("{0} is a leap year".format(year))
+    return sorted_students
 
 
 
-# if not divided by both 400 (century year) and 4 (not century year)
+# Example usage:
 
-# year is not leap year
+student1 = Student("Nithi", "0722129016", 3.7)
 
-else:
+student2 = Student("Nila", "0722129001", 3.9)
 
-    print("{0} is not a leap year".format(year))
+student3 = Student("Muthu", "0722129017", 3.5)
+
+student4 = Student("keerthana", "072212002", 3.8)
+
+
+
+students = [student1, student2, student3, student4]
+
+
+
+sorted_students = sort_students(students)
+
+
+
+# Print the sorted list of students by CGPA in descending order
+
+for student in sorted_students:
+
+    print(f"Name: {student.name}, Roll Number: {student.roll_number}, CGPA: {student.cgpa}")
